@@ -1,0 +1,22 @@
+*** Settings ***
+Library    Selenium2Library
+Suite Teardown    Close Browser
+*** Variables ***
+
+
+*** Testcases ***
+Search from google
+  Search Robot
+  Found Robot
+ 
+
+
+*** Keywords ***
+Search Robot
+	Open Browser    http://www.google.co.th
+
+	Input Text    gbqfq    Robot
+	Click Button    gbqfb
+
+Found Robot
+	Wait Until Page Contains    Robot I love you
