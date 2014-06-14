@@ -1,0 +1,32 @@
+*** Settings ***
+Library           Selenium2Library
+Suite Teardown    Close All Browsers
+
+*** Variables ***
+${GOOGLE URL}     http://www.google.co.th
+
+*** Testcases ***
+Rule search data from google
+  [Template]    Search flow
+  #============== + =======================#
+  #   Keyword     |     Expected Result    #
+  #============== + =======================#
+   Robot                Robot
+   Robotframework       Robotframework
+
+*** Keywords ***
+Search flow
+   [Arguments]    ${keyword}    ${expected}
+   Search     ${keyword}
+   Found      ${expected}
+
+Search
+	[Arguments]     ${keyword}
+	Open Browser    ${GOOGLE URL}
+
+	Input Text      gbqfq    ${keyword}
+	Click Button    gbqfb
+
+Found
+	[Arguments]                 ${expected}
+	Wait Until Page Contains    ${expected}
